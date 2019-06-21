@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { Button } from 'reactstrap';
+
 import Logo from '../../assets/images/logo.svg';
 import styles from './App.scss';
 
@@ -20,6 +23,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <Button color="primary">primary</Button>
       </header>
     </div>
   );
