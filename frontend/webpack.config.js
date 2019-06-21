@@ -14,13 +14,16 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   output: {
-    filename: '[name].[hash].bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].bundle.js',
+    publicPath: '/'
   },
   devtool: "inline-source-map",
   devServer: {
     inline: true,
     contentBase: './public',
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   module: {
     rules: [

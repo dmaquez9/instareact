@@ -1,31 +1,38 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch, 
+  Link
+} from 'react-router-dom';
 
-import { Button } from 'reactstrap';
+// Pages
+import LoginPage from '../../routes/Login';
+import SignupPage from '../../routes/Signup';
 
 import Logo from '../../assets/images/logo.svg';
 import styles from './App.scss';
 
 const App: React.FC = () => {
   return (
-    <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <div className={styles.AppLogo}>
-          <Logo />
-        </div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className={styles.AppLink}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button color="primary">primary</Button>
-      </header>
-    </div>
+    <Router>
+        <div className={styles.App}>
+        <header className={styles.AppHeader}>
+          <div className={styles.AppLogo}>
+            <Logo />
+          </div>
+          <p>
+            Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+          <Link to="/"> Login </Link>
+          <Link to="/register"> Register </Link>
+            <Switch>
+              <Route exact path='/' component={LoginPage}></Route>
+              <Route exact path='/register' component={SignupPage}></Route>
+            </Switch>
+        </header>
+      </div>
+    </Router>
   );
 }
 
