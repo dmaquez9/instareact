@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch, 
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Pages
 import LoginPage from '../../routes/Login';
@@ -13,10 +8,10 @@ import SignupPage from '../../routes/Signup';
 import Logo from '../../assets/images/logo.svg';
 import styles from './App.scss';
 
-const App: React.FC = () => {
+const App: React.FC = (): React.ReactElement => {
   return (
     <Router>
-        <div className={styles.App}>
+      <div className={styles.App}>
         <header className={styles.AppHeader}>
           <div className={styles.AppLogo}>
             <Logo />
@@ -26,14 +21,14 @@ const App: React.FC = () => {
           </p>
           <Link to="/"> Login </Link>
           <Link to="/register"> Register </Link>
-            <Switch>
-              <Route exact path='/' component={LoginPage}></Route>
-              <Route exact path='/register' component={SignupPage}></Route>
-            </Switch>
+          <Switch>
+            <Route exact path="/" component={LoginPage}></Route>
+            <Route path="/register" component={SignupPage}></Route>
+          </Switch>
         </header>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
