@@ -5,11 +5,15 @@ import { FaSpinner } from 'react-icons/fa'
 
 const spin = keyframes`
   '0%' {transform: 'rotate(0deg)'},
-  '100%' {transform: 'rotate(360deg)'},
+  '100%' {transform: 'rotate(360deg)'}
 `;
 
 const FPS = styled.div`
-  margin-top: 3em;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
   font-size: 4em;
 `;
 
