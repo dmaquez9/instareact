@@ -7,20 +7,23 @@ import { Spinner } from './lib';
 import Input from '../elements/InputField';
 import Button from '../elements/Button';
 
-const LoginForm = ({ onSubmit, buttonText }: any): any => {
-  const doLogin = (values, { setSubmitting }) => {
+
+const SignupForm = ({ onSubmit, buttonText }: any): any => {
+  const doRegister = (values, { setSubmitting }) => {
     onSubmit(values);
     setSubmitting(false);
   };
 
   const formik = useFormik({
-    initialValues: { username: '', password: '' },
-    onSubmit: doLogin,
+    initialValues: { email: '', name: '', username: '', password: '' },
+    onSubmit: doRegister,
   });
 //      {isRejected ? <Alert message={error ? error.message : null} type="error" /> : null}
 
   return (
     <Form onSubmit={formik.handleSubmit}>
+      <Input label="Email" formik={formik} id="email" name="email" prefix={<Icon type="mail" />} />
+      <Input label="Fullname" formik={formik} id="name" name="name" prefix={<Icon type="user" />} />
       <Input label="Username" formik={formik} id="username" name="username" prefix={<Icon type="user" />} />
       <Input label="Password" formik={formik} type="password" id="password" name="password" prefix={<Icon type="key" />} />
       <Form.Item>
@@ -32,4 +35,4 @@ const LoginForm = ({ onSubmit, buttonText }: any): any => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;

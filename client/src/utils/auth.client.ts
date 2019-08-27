@@ -21,7 +21,6 @@ interface UserData {
 }
 
 interface UserResponse {
-  token: string;
   user: UserData;
 }
 const handleUserResponse = ({ data }: any): UserResponse => data.user;

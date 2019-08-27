@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Form, Input } from 'antd';
 import styled from 'styled-components';
 
 const style = {
@@ -7,6 +7,16 @@ const style = {
     backgroundColor: '#f8f8f8 !important',
   }
 };
+
+const Label = styled.label`
+  font-weight: bold;
+  color: #595654;
+  margin: 0 !important;
+`;
+
+const Item = styled(Form.Item)`
+  margin-bottom: 8px !important;
+`;
 
 const InputBox = styled(Input)(style);
 const Password = styled(Input.Password)(style);
@@ -22,15 +32,16 @@ const InputType = (type, props, field) => {
       return <InputBox type={type} size="large" {...props} {...field} />
   }
 }
-const InputField = ({ formik, type = 'text', ...props}) => {
+const InputField = ({ label = '',formik, type = 'text', ...props}) => {
   const [field, meta] = formik.getFieldProps(props);
   return (
-    <>
+    <Item>
+      {label !== '' && <Label htmlFor={props.id}>{label}</Label>}
       {InputType(type, props, field)}
       {meta.touched && meta.error && (
         <div>{meta.error}</div>
       )}
-    </>
+    </Item>
   )
 };
 

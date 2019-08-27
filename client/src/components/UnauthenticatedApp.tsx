@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import { useAuth } from '../context/auth.context';
 import styled from 'styled-components';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 // Assets
 import SignPNG from '../assets/images/sign.png';
@@ -49,8 +50,8 @@ const Link = styled.button`
 `;
 
 const UnauthenticatedApp: React.FC = (): React.ReactElement => {
-  const { login } = useAuth();
-  const [tab, setTab] = React.useState(1);
+  const { login, register } = useAuth();
+  const [tab, setTab] = React.useState(0);
   const TitleText = tab === 0 ? 'Sign in and discover' : 'Sign Up';
   const activeTab = (active:number) => active === tab ? 'active' : '';
   return (
@@ -59,8 +60,8 @@ const UnauthenticatedApp: React.FC = (): React.ReactElement => {
         <SignForm span={10}>
           <TitleForm>{TitleText}</TitleForm>
           {tab === 0 ? (
-            <LoginForm onSubmit={login} buttonText="Register" />
-          ) : 'Signup'}
+            <LoginForm onSubmit={login} buttonText="Login" />
+          ) : <SignupForm onSubmit={register} buttonText="Register" />}
         </SignForm>
         <SignImage span={14}>
           <Link className={activeTab(0)} onClick={() => setTab(0)}>Sign In</Link>
