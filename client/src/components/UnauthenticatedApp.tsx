@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { Input } from 'antd';
 import { useAuth } from '../context/auth.context';
 import useCallbackStatus from '../utils/use-callback-status';
 import { Spinner } from './lib';
@@ -10,6 +11,7 @@ const LoginForm = ({ onSubmit, buttonText }: any): any => {
   const handleSubmit = (event: any): any => {
     event.preventDefault();
     const { username, password } = event.target.elements;
+    console.log(event.target);
     run(
       onSubmit({
         username: username.value,
@@ -21,9 +23,9 @@ const LoginForm = ({ onSubmit, buttonText }: any): any => {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="username">username</label>
-      <input id="username" name="username" />
+      <Input id="username" name="username" />
       <label htmlFor="password">Password</label>
-      <input id="password" name="password" type="password" />
+      <Input.Password id="password" name="password" />
       <div>
         <button type="submit">
           {buttonText} {isPending ? <Spinner /> : null}

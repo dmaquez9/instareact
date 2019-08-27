@@ -45,25 +45,11 @@ module.exports = {
           'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
         ],
       },
-      // {
-      //   test: /\.(css|scss|sass)$/,
-      //   exclude: path.resolve(__dirname, 'node_modules'),
-      //   use: [
-      //     MiniCssExtractPlugin.loader,
-      //     'css-modules-typescript-loader',
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: {
-      //           localIdentName: '[local]__[hash:base64:5]'
-      //         },
-      //         sourceMap: true,
-      //         importLoaders: 1
-      //       }
-      //     },
-      //     'sass-loader'
-      //   ]
-      // },
+      {
+        test: /\.(css|less|scss|sss)$/,
+        include: /node_modules/,
+        loaders: ['style-loader', 'css-loader'],
+      },
       // {
       //   test: /\.svg$/,
       //   exclude: path.resolve(__dirname, 'node_modules'),
@@ -83,8 +69,8 @@ module.exports = {
   ],
   optimization: {
     minimizer: [
-      new TerserJSPlugin({}),
-      // , new OptimizeCSSAssetsPlugin({})
+      new TerserJSPlugin({})
+      // new OptimizeCSSAssetsPlugin({})
     ],
   },
 };
