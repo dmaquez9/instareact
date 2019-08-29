@@ -18,6 +18,11 @@ const Item = styled(Form.Item)`
   margin-bottom: 8px !important;
 `;
 
+const Error = styled.span`
+  font-size: 12px;
+  color: red;
+`;
+
 const InputBox = styled(Input)(style);
 const Password = styled(Input.Password)(style);
 const Textarea = styled(Input.TextArea)(style);
@@ -39,7 +44,7 @@ const InputField = ({ label = '',formik, type = 'text', ...props}) => {
       {label !== '' && <Label htmlFor={props.id}>{label}</Label>}
       {InputType(type, props, field)}
       {meta.touched && meta.error && (
-        <div>{meta.error}</div>
+        <Error>{meta.error}</Error>
       )}
     </Item>
   )

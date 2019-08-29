@@ -2,14 +2,11 @@
 import { getUser } from './auth.client';
 
 async function bootstrapAppData(): any {
-  const data = await getUser();
+  const { data } = await getUser();
   if (!data) {
     return { user: null };
   }
-  const { user } = data.data;
-  return {
-    user,
-  };
+  return data;
 }
 
 export { bootstrapAppData };

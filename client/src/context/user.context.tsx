@@ -5,11 +5,8 @@ import { useAuth } from './auth.context';
 const UserContext = React.createContext<any | null>(null);
 
 function UserProvider(props: any): any {
-  const {
-    data,
-  } = useAuth();
-  const user = data.user;
-  return <UserContext.Provider value={user} {...props} />;
+  const { data } = useAuth();
+  return <UserContext.Provider value={data} {...props} />;
 }
 
 function useUser(): any {

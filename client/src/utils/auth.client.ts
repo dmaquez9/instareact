@@ -6,24 +6,7 @@ interface UserInterface {
   password: string;
 }
 
-interface UserData {
-  _id: string;
-  __v: number;
-  email: string;
-  fullname: string;
-  username: string;
-  password: string;
-  role: string;
-  phone: string;
-  profilePic: string;
-  privacyLevel: boolean;
-  createdAt: string;
-}
-
-interface UserResponse {
-  user: UserData;
-}
-const handleUserResponse = ({ data }: any): UserResponse => data.user;
+const handleUserResponse = ({ data }: any): any => data;
 
 const login = ({ username, password }: UserInterface): any =>
   client('auth/login', { body: { username, password }}).then(handleUserResponse);

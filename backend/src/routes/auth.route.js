@@ -1,13 +1,12 @@
 const express = require('express');
 const validate = require('express-validation');
-const passport = require('passport');
 const validation = require('../validations/auth.validation');
 const controller = require('../controllers/auth.controller');
 
 const router = express.Router();
 
 router.route('/login')
-  .post(validate(validation.login), passport.authenticate('local'), controller.login);
+  .post(validate(validation.login), controller.auth);
 
 router.route('/me')
   .get(controller.refresh);
